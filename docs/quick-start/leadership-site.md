@@ -4,52 +4,19 @@ sidebar_position: 1
 
 # Leadership Site
 
-Docusaurus can manage multiple versions of your docs.
+To get started with running a version of the leadership site locally follow these steps:
 
-## Create a docs version
+### Setup
+- Clone the repo `git clone https://github.com/acmutd/leadership.git`
+- Fill in the values in `.env.local.example` and rename it to `.env.local`. Reach out to an existing contributor to get these values.
 
-Release a version 1.0 of your project:
+Note: You can also find the environment variables via [Doppler](https://doppler.com). Open the Doppler website, sign in with your ACM account and open the leadership project. Then copy the variables in the `dev` config to your local `.env.local` file. Currently, the leadership site uses Doppler to fetch environment variables for its production vercel deployment. It is not configured to pull the environment variables from Doppler for local workloads yet.
+### Launch
+- Run `npm install`
+- Run `npm run dev`
 
-```bash
-npm run docusaurus docs:version 1.0
-```
+:::caution
+If you are using Windows, running `npm run dev` may cause some errors. By default this project is setup to inspect server side logs and print them to the terminal window running the application. If there are any issues remove the `NODE_OPTIONS='--inspect'` from the scripts section of the `package.json` file for `npm run dev`.
+:::
 
-The `docs` folder is copied into `versioned_docs/version-1.0` and `versions.json` is created.
-
-Your docs now have 2 versions:
-
-- `1.0` at `http://localhost:3000/docs/` for the version 1.0 docs
-- `current` at `http://localhost:3000/docs/next/` for the **upcoming, unreleased docs**
-
-## Add a Version Dropdown
-
-To navigate seamlessly across versions, add a version dropdown.
-
-Modify the `docusaurus.config.js` file:
-
-```js title="docusaurus.config.js"
-module.exports = {
-  themeConfig: {
-    navbar: {
-      items: [
-        // highlight-start
-        {
-          type: 'docsVersionDropdown',
-        },
-        // highlight-end
-      ],
-    },
-  },
-};
-```
-
-The docs version dropdown appears in your navbar:
-
-![Docs Version Dropdown](/img/tutorial/docsVersionDropdown.png)
-
-## Update an existing version
-
-It is possible to edit versioned docs in their respective folder:
-
-- `versioned_docs/version-1.0/hello.md` updates `http://localhost:3000/docs/hello`
-- `docs/hello.md` updates `http://localhost:3000/docs/next/hello`
+After running these steps you should be able to open up `http://localhost:3000` and view the leadership site!

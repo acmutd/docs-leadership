@@ -1,88 +1,37 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # Birthday Script
 
-Let's translate `docs/intro.md` to French.
+The birthday bot program resides in the repository as a GitHub action triggered workflow. Much like the anniversary program, this script runs eveery night to check whether there are any birthdays on that date. Birthdays for officers are found on this [google spreadsheet](https://docs.google.com/spreadsheets/d/1hGO85H85VOhVnI-seXKsDKIXVKZ8Kq1EK59hF382u6k/edit#gid=0). Note: Need to be signed in with an `@acmutd.co` account to view the spreadsheet. If you've just joined the organization update the spreadsheet with your birthday too! 
 
-## Configure i18n
+### Setup
 
-Modify `docusaurus.config.js` to add support for the `fr` locale:
+To run the birthday script locally follow these steps:
 
-```js title="docusaurus.config.js"
-module.exports = {
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'fr'],
-  },
-};
-```
-
-## Translate a doc
-
-Copy the `docs/intro.md` file to the `i18n/fr` folder:
-
-```bash
-mkdir -p i18n/fr/docusaurus-plugin-content-docs/current/
-
-cp docs/intro.md i18n/fr/docusaurus-plugin-content-docs/current/intro.md
-```
-
-Translate `i18n/fr/docusaurus-plugin-content-docs/current/intro.md` in French.
-
-## Start your localized site
-
-Start your site on the French locale:
-
-```bash
-npm run start -- --locale fr
-```
-
-Your localized site is accessible at `http://localhost:3000/fr/` and the `Getting Started` page is translated.
+ - Clone the repo `git clone https://github.com/acmutd/leadership.git`
+ - Open the `calendar-converter` project in google cloud, find the default service account and download the `.json` key.
 
 :::caution
-
-In development, you can only use one locale at a same time.
-
+You may need to create a new key for the service account to be able to download it. If the service account has reached the limit for the number of keys then reach out to an existing contributor for the key or duplicate the service account.
 :::
 
-## Add a Locale Dropdown
+ - Set the following environment variables via the command line
 
-To navigate seamlessly across languages, add a locale dropdown.
-
-Modify the `docusaurus.config.js` file:
-
-```js title="docusaurus.config.js"
-module.exports = {
-  themeConfig: {
-    navbar: {
-      items: [
-        // highlight-start
-        {
-          type: 'localeDropdown',
-        },
-        // highlight-end
-      ],
-    },
-  },
-};
+```
+export SLACK_CHANNEL_ID=<WEBHOOK_URL>
+export SLACK_TOKEN=<API_KEY>
+export BIRTHDAY_SPREADSHEET_ID=https://docs.google.com/spreadsheets/<SPREADSHEET_ID>/edit
+export GOOGLE_APPLICATION_CREDENTIALS=<PATH_TO_SERVICE_ACCOUNT_JSON_FILE>
 ```
 
-The locale dropdown now appears in your navbar:
+:::tip
+While iterating over local code changes it can be helpful to add a dummy birthday to the google spreadsheet with the current date. Additionally, it would be helpful to set the `SLACK_CHANNEL_ID` to be a Direct Message with yourself in the slack workspace. This will help prevent clutter in public slack channels.
+:::
 
-![Locale Dropdown](/img/tutorial/localeDropdown.png)
+### Launch
 
-## Build your localized site
-
-Build your site for a specific locale:
-
-```bash
-npm run build -- --locale fr
-```
-
-Or build your site to include all the locales at once:
-
-```bash
-npm run build
-```
+ - Run `npm install`
+ - Run `npm run birthday-build`
+ - Run `npm run birthday-start`

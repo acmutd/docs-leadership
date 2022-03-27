@@ -1,88 +1,27 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 # Anniversary Script
 
-Let's translate `docs/intro.md` to French.
+The repository also separately from the NextJS application houses the Anniversary workflow. This script runs as a GitHub action every night to check whether an anniversary has occured and if so to then send a message in slack.
 
-## Configure i18n
+### Setup
 
-Modify `docusaurus.config.js` to add support for the `fr` locale:
+To run the anniversary script locally follow these steps:
 
-```js title="docusaurus.config.js"
-module.exports = {
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'fr'],
-  },
-};
-```
+ - Clone the repo `git clone https://github.com/acmutd/leadership.git`
+ - Set all the environment variables for the firebase config via the command line. The script does not use `dotenv` so set them as global environment variables using `export FIREBASE_API_KEY=<API KEY>` etc. 
+ - Set the slack channel environment variable to point to the `#general` channel by running `export SLACK_CHANNEL_ID=<WEBHOOK URL>`. Note that this is different from the slack channel ID used by the NextJS application (which points to `#shoutouts`).
 
-## Translate a doc
+Note: You can find all the environment variables by asking a contributor or by checking [Doppler](https://doppler.com).
 
-Copy the `docs/intro.md` file to the `i18n/fr` folder:
-
-```bash
-mkdir -p i18n/fr/docusaurus-plugin-content-docs/current/
-
-cp docs/intro.md i18n/fr/docusaurus-plugin-content-docs/current/intro.md
-```
-
-Translate `i18n/fr/docusaurus-plugin-content-docs/current/intro.md` in French.
-
-## Start your localized site
-
-Start your site on the French locale:
-
-```bash
-npm run start -- --locale fr
-```
-
-Your localized site is accessible at `http://localhost:3000/fr/` and the `Getting Started` page is translated.
-
-:::caution
-
-In development, you can only use one locale at a same time.
-
+:::tip
+When iterating over different code changes it might be helpful to set the `SLACK_CHANNEL_ID` to be a Direct Message with yourself in the slack workspace. This will help prevent clutter in public slack channels.
 :::
 
-## Add a Locale Dropdown
+### Launch
 
-To navigate seamlessly across languages, add a locale dropdown.
-
-Modify the `docusaurus.config.js` file:
-
-```js title="docusaurus.config.js"
-module.exports = {
-  themeConfig: {
-    navbar: {
-      items: [
-        // highlight-start
-        {
-          type: 'localeDropdown',
-        },
-        // highlight-end
-      ],
-    },
-  },
-};
-```
-
-The locale dropdown now appears in your navbar:
-
-![Locale Dropdown](/img/tutorial/localeDropdown.png)
-
-## Build your localized site
-
-Build your site for a specific locale:
-
-```bash
-npm run build -- --locale fr
-```
-
-Or build your site to include all the locales at once:
-
-```bash
-npm run build
-```
+ - Run `npm install`
+ - Run `npm run anniversary-build`
+ - Run `npm run anniversary-start`

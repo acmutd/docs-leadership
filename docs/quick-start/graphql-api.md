@@ -4,85 +4,46 @@ sidebar_position: 2
 
 # GraphQL API
 
-Let's translate `docs/intro.md` to French.
+To view the production GraphQL API click [here](https://leadership.acmutd.co/api/graphql).
 
-## Configure i18n
+### Local Setup
 
-Modify `docusaurus.config.js` to add support for the `fr` locale:
+To test the GraphQL API locally follow these steps:
 
-```js title="docusaurus.config.js"
-module.exports = {
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'fr'],
-  },
-};
-```
+ - Follow the setup and launch steps described in [Leadership - Quick Start](./leadership-site.md).
+ - Open the GraphQL API endpoint at `http://localhost:3000/api/graphql`
+ - Click `Query your server` to open Apollo Studio. Note: Make sure to a compliant browser like Chrome.
 
-## Translate a doc
+![GraphQL API](./images/api.png)
 
-Copy the `docs/intro.md` file to the `i18n/fr` folder:
-
-```bash
-mkdir -p i18n/fr/docusaurus-plugin-content-docs/current/
-
-cp docs/intro.md i18n/fr/docusaurus-plugin-content-docs/current/intro.md
-```
-
-Translate `i18n/fr/docusaurus-plugin-content-docs/current/intro.md` in French.
-
-## Start your localized site
-
-Start your site on the French locale:
-
-```bash
-npm run start -- --locale fr
-```
-
-Your localized site is accessible at `http://localhost:3000/fr/` and the `Getting Started` page is translated.
-
-:::caution
-
-In development, you can only use one locale at a same time.
-
+:::tip
+Apollo Studio is the most convenient web-based tool for working with the Leadership GraphQL API. However, it is also possible to use Postman or other tools to interact with the API. For more information see [Postman - GraphQL Support](https://learning.postman.com/docs/sending-requests/supported-api-frameworks/graphql/).
 :::
 
-## Add a Locale Dropdown
+ - Sign into the leadership site & navigate to `http://localhost:3000/settings` and generate a new Access Token.
 
-To navigate seamlessly across languages, add a locale dropdown.
+![Settings Page](./images/settings.png)
 
-Modify the `docusaurus.config.js` file:
+:::caution
+An Access Token generated locally (at `http://localhost:3000/settings`) will only work when testing the [local GraphQL endpoint](http://localhost:3000/api/graphql). An Access Token created in the [production instance](https://leadership.acmutd.co/settings) will only work on the [production GraphQL endpoint](https://leadership.acmutd.co/api/graphql).
+:::
 
-```js title="docusaurus.config.js"
-module.exports = {
-  themeConfig: {
-    navbar: {
-      items: [
-        // highlight-start
-        {
-          type: 'localeDropdown',
-        },
-        // highlight-end
-      ],
-    },
-  },
-};
+ - Copy the token (it should start with `eyJ`) and add it as a header in Apollo Studio as follows `Authorization: Bearer <API KEY>`.
+
+![Authorization Header](./images/authorization.png)
+
+ - The schema and queries for the GraphQL API should now be visible.
+
+![Apollo Schema](./images/apollo.png)
+
+ - Start using the api! Here's a sample query to get you started.
+
+```
+query ExampleQuery {
+  getOfficers {
+    id
+    name
+  }
+}
 ```
 
-The locale dropdown now appears in your navbar:
-
-![Locale Dropdown](/img/tutorial/localeDropdown.png)
-
-## Build your localized site
-
-Build your site for a specific locale:
-
-```bash
-npm run build -- --locale fr
-```
-
-Or build your site to include all the locales at once:
-
-```bash
-npm run build
-```
