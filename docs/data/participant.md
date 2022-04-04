@@ -4,7 +4,11 @@ sidebar_position: 2
 
 # Members
 
-Information about members populates the **Membership** tab on the Leadership site. The following information about members is stored.
+Information about members populates the **Membership** tab on the Leadership site. 
+
+### Schema
+
+The following information about members is stored.
 
 ```ts
 interface participant {
@@ -56,7 +60,7 @@ Each officer contains a `team[]` field. Each team object only contains the requi
 To avoid having to read all documents when populating the membership tab for the leadership site, some information is aggregated into a single document. The following information is stored in the `total/participants` document. 
 
 ```ts
-interface allinone {
+interface totalParticipants {
     participants: participant[];
     programs: string[];
 }

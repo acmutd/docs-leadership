@@ -4,7 +4,11 @@ sidebar_position: 1
 
 # Officers
 
-Information about officers populates the **Leadership** tab on the Leadership site. The following information about officers is stored.
+Information about officers populates the **Leadership** tab on the Leadership site. 
+
+### Schema
+
+The following information about officers is stored.
 
 ```ts
 interface officer {
