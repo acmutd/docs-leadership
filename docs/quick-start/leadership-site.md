@@ -7,10 +7,16 @@ sidebar_position: 1
 To get started with running a version of the leadership site locally follow these steps:
 
 ### Setup
-- Clone the repo `git clone https://github.com/acmutd/leadership.git`
-- Fill in the values in `.env.local.example` and rename it to `.env.local`. Reach out to an existing contributor to get these values.
 
-Note: You can also find the environment variables via [Doppler](https://doppler.com). Open the Doppler website, sign in with your ACM account and open the leadership project. Then copy the variables in the `dev` config to your local `.env.local` file. Currently, the leadership site uses Doppler to fetch environment variables for its production vercel deployment. It is not configured to pull the environment variables from Doppler for local workloads yet.
+Before going through these steps make sure that you have access to [Doppler](https://doppler.com). You can get access by signing in with your ACM account. Additionally make sure to install the [Doppler CLI](https://docs.doppler.com/docs/cli).
+
+- Clone the repo `git clone https://github.com/acmutd/leadership.git`
+- Run `cd leadership` to enter the leadership site directory
+- Run `doppler login` and sign in with your ACM account when prompted to.
+- Run `doppler setup` and select the `leadership` project with the `dev` config in the cli prompts.
+
+These steps will setup the project locally with all the environment variables needed.
+
 ### Launch
 - Run `npm install`
 - Run `npm run dev`

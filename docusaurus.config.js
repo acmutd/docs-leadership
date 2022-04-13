@@ -1,39 +1,42 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require("prism-react-renderer/themes/github");
+const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'ACM Leadership Project',
-  tagline: 'Learn more about the Association for Computing Machinery',
-  url: 'https://docs.leadership.acmutd.co',
-  baseUrl: '/',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
-  organizationName: 'ACM', // Usually your GitHub org/user name.
-  projectName: 'docs-leadership', // Usually your repo name.
+  title: "ACM Leadership Project",
+  tagline: "Learn more about the Association for Computing Machinery",
+  url: "https://docs.leadership.acmutd.co",
+  baseUrl: "/",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
+  favicon: "img/favicon.ico",
+  organizationName: "ACM", // Usually your GitHub org/user name.
+  projectName: "docs-leadership", // Usually your repo name.
 
   presets: [
     [
-      'classic',
+      "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
-          editUrl: 'https://github.com/acmutd/docs-leadership/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl:
+            "https://github.com/acmutd/docs-leadership/",
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            'https://github.com/acmutd/docs-leadership/tree/main/packages/create-docusaurus/templates/shared/',
+            "https://github.com/acmutd/docs-leadership/",
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve("./src/css/custom.css"),
         },
       }),
     ],
@@ -43,90 +46,90 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Leadership',
+        title: "Leadership",
         logo: {
-          alt: 'Logo',
-          src: 'img/logo-black.svg',
-          srcDark: 'img/logo-white.svg',
+          alt: "Logo",
+          src: "img/logo-black.svg",
+          srcDark: "img/logo-white.svg",
         },
         items: [
           {
-            type: 'doc',
-            docId: 'intro',
-            position: 'left',
-            label: 'Docs',
+            type: "doc",
+            docId: "intro",
+            position: "left",
+            label: "Docs",
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          { to: "/blog", label: "Blog", position: "left" },
           {
-            href: 'https://github.com/acmutd/leadership',
-            label: 'GitHub',
-            position: 'right',
+            href: "https://github.com/acmutd/leadership",
+            label: "GitHub",
+            position: "right",
           },
         ],
       },
       footer: {
-        style: 'dark',
+        style: "dark",
         links: [
           {
-            title: 'Leadership',
+            title: "Leadership",
             items: [
               {
-                label: 'Docs',
-                to: '/docs/intro',
+                label: "Docs",
+                to: "/docs/intro",
               },
               {
-                label: 'Blog',
-                to: '/blog',
+                label: "Blog",
+                to: "/blog",
               },
             ],
           },
           {
-            title: 'Social',
+            title: "Social",
             items: [
               {
-                label: 'LinkedIn',
-                href: 'https://www.linkedin.com/company/27182339',
+                label: "LinkedIn",
+                href: "https://www.linkedin.com/company/27182339",
               },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/acmutd',
+                label: "Twitter",
+                href: "https://twitter.com/acmutd",
               },
               {
-                label: 'Instagram',
-                href: 'https://instagram.com/acmutd',
+                label: "Instagram",
+                href: "https://instagram.com/acmutd",
               },
             ],
           },
           {
-            title: 'Community',
+            title: "Community",
             items: [
               {
-                label: 'GitHub',
-                href: 'https://github.com/acmutd',
+                label: "GitHub",
+                href: "https://github.com/acmutd",
               },
               {
-                label: 'Discord',
-                href: 'https://acmutd.co/discord',
+                label: "Discord",
+                href: "https://acmutd.co/discord",
               },
             ],
           },
           {
-            title: 'More',
+            title: "More",
             items: [
               {
-                label: 'Leadership Site',
-                href: 'https://leadership.acmutd.co',
+                label: "Leadership Site",
+                href: "https://leadership.acmutd.co",
               },
               {
-                label: 'ACM Website',
-                href: 'https://acmutd.co',
+                label: "ACM Website",
+                href: "https://acmutd.co",
               },
               {
-                label: 'ACM Portal',
-                href: 'https://portal.acmutd.co',
-              }
+                label: "ACM Portal",
+                href: "https://portal.acmutd.co",
+              },
             ],
-          }
+          },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} ACM Leadership. Built with Docusaurus.`,
       },
