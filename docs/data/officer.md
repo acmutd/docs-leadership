@@ -22,6 +22,8 @@ interface officer {
   linkedin?: string;
   role_list?: role[] | string[];
   accolades?: accolade[] | string[];
+  teams?: team[];
+  events?: event[];
 }
 ```
 
@@ -29,7 +31,7 @@ interface officer {
 The `id` field for each officer can be seen when accessing their personal page as follows --> `https://leadership.acmutd.co/profile/<ID>`. This is a uniquely auto-generated id that also serves as the document name in the `officers` collection on firestore.
 :::
 
-Note: The `start` and `end` fields on the document are stored as timestamps in Firestore but are converted to and used as a `string` in the application logic.
+The `start` and `end` fields on the document are stored as timestamps in Firestore but are converted to and used as a `string` in the application logic. The `teams` and `events` fields are not present for all officers. Only those that have managed teams (through Projects or Research) or organized events (through HackUTD / Hacktoberfest / etc) have an array of objects for these fields. Only the `name` and `id` values are present in the `teams` and `events` arrays.
 
 ### Roles
 
