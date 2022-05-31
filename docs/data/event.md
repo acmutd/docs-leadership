@@ -17,8 +17,8 @@ interface event {
   
   date_start?: firestore.Timestamp | string;
   date_end?: firestore.Timestamp | string;
-  team?: [officer];
-  director?: officer[];
+  team?: officer[];
+  director?: officer;
   filter?: string[];
 }
 ```
@@ -27,7 +27,7 @@ interface event {
 The `id` field for each event can be seen when accessing their profile page as follows --> `https://leadership.acmutd.co/event/<ID>`. This is a uniquely auto-generated id that also serves as the document name in the `event_leadership` collection on firestore.
 :::
 
-The `date_start` and `date_end` fields on the document are stored as timestamps in Firestore but are converted to and used as a `string` in the application logic.
+The `date_start` and `date_end` fields on the document are stored as timestamps in Firestore but are converted to and used as a `string` in the application logic. On the frontend, only the `date_start` is shown if the start & end dates are the same.
 
 ### Team
 
